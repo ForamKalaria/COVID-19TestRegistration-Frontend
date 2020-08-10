@@ -1,0 +1,121 @@
+<p> </p>
+
+ 
+<p> </p>
+<form
+      *ngIf="!isInserted"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+
+<div class="form-group">
+  <label for="email">Email</label>
+  <input
+    type="text"
+    class="form-control"
+    name="email"
+    [(ngModel)]="form.email"
+    required
+    minlength="3"
+    #email="ngModel"
+  />
+  <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && email.invalid"
+        >
+          Email is required!
+        </div>
+      </div>
+
+
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input
+      type="text"
+      class="form-control"
+      name="firstname"
+      [(ngModel)]="form.firstname"
+      required
+      minlength="3"
+      maxlength="20"
+      #firstname="ngModel"
+    />
+    <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && firstname.invalid"
+        >
+          Firstname is required!
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          [(ngModel)]="form.lastname"
+          required
+          minlength="5"
+          maxlength="20"
+          #lastname="ngModel"
+        />
+        <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="f.submitted && lastname.invalid"
+            >
+              Lastname is required!
+            </div>
+          </div>
+
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="5"
+          maxlength="20"
+          #password="ngModel"
+        />
+        <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="f.submitted && password.invalid"
+            >
+              Password is required!
+            </div>
+          </div>
+
+    <p> </p>
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Register your  name!</button>
+  </div>
+
+
+<div class="form-group">
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && isNotInserted"
+  >
+    Login failed: {{ errorMessage }}
+  </div>
+</div>
+</form>
+
+  <div class="alert alert-success" *ngIf="isInserted">
+    Registered.
+  </div>
+
+<p></p>

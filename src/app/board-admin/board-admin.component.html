@@ -1,0 +1,143 @@
+  
+  <form
+        *ngIf="!isInserted"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+      <h4 style="text-align:center">Register new Test Center! </h4>
+      <br>
+
+  <div class="form-group">
+    <label for="center_id">Center Id</label>
+    <input
+      type="number"
+      class="form-control"
+      name="center_id"
+      [(ngModel)]="form.center_id"
+      required
+      minlength="3"
+      #center_id="ngModel"
+    />
+    <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && center_id.invalid"
+          >
+            Username is required!
+          </div>
+        </div>
+ 
+
+    <div class="form-group">
+      <label for="center_location">Center Location</label>
+      <input
+        type="text"
+        class="form-control"
+        name="center_location"
+        [(ngModel)]="form.center_location"
+        required
+        minlength="5"
+        #center_location="ngModel"
+      />
+      <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && center_location.invalid"
+          >
+            Location is required!
+          </div>
+        </div>
+
+      <p> </p>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Register a test center!</button>
+    </div>
+
+ 
+  <div class="form-group">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && isNotInserted"
+    >
+      Failed: {{ errorMessage }}
+    </div>
+  </div>
+</form>
+
+    <div class="alert alert-success" *ngIf="isInserted">
+      Registered.
+    </div>
+
+  <br> <br> <br>
+
+  <form
+        *ngIf="!isDeleted"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit1()"
+        #f="ngForm"
+        novalidate
+      >
+
+<h5>Remove a Test Center? (Center Id will be required in order to remove test center)</h5>
+  <div class="form-group">
+    <label for="center_id">Center Id</label>
+    <input
+      type="number"
+      class="form-control"
+      name="center_id"
+      [(ngModel)]="form.center_id"
+      required
+      minlength="3"
+      #center_id="ngModel"
+    />
+    <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && center_id.invalid"
+  >
+    Id is required!
+  </div>
+</div>
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Remove test center!</button>
+  </div> 
+
+  <div class="form-group">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && isNotDeleted"
+    >
+      There is no Test Center registered on this ID. You can view All Centers to verify the Center ID. {{ errorMessage }}
+    </div>
+  </div>
+</form>
+
+  <div class="alert alert-success" *ngIf="isDeleted">
+    Deleted!
+  </div>
+
+
+ 
+ 
+  
+
+  <!-- <div class="alert-danger" *ngIf="f.submitted && center_id.invalid">
+    <div *ngIf="center_id.errors.required">Center Id is required</div>
+    <div *ngIf="center_id.errors.minlength">
+      Center Id must be at least 3 characters
+    </div>
+    <div *ngIf="center_id.errors.maxlength">
+      Center Id must be at most 5 characters
+    </div>
+  </div> -->
+
+
+  
+
+    

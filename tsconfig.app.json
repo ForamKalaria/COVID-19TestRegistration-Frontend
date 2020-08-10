@@ -3,6 +3,9 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
+    "experimentalDecorators": true,
+    "allowJs": true,
+
     "types": []
   },
   "files": [

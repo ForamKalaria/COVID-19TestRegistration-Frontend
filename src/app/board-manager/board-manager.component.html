@@ -1,0 +1,166 @@
+<p> </p>
+
+<form
+        *ngIf="!isInserted"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+      <h4 style="text-align:center">Register new Employee here! </h4>
+
+  <div class="form-group">
+    <label for="empId">Id</label>
+    <input
+      type="number"
+      class="form-control"
+      name="empId"
+      [(ngModel)]="form.empId"
+      required
+      minlength="3"
+      maxlength="20"
+      #center_id="ngModel"
+      placeholder="Enter Employee Id"
+    />
+    <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && center_id.invalid"
+  >
+    Id is required!
+  </div>
+  </div>
+
+    <div class="form-group">
+      <label for="empName">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="empName"
+        [(ngModel)]="form.empName"
+        required
+        minlength="5"
+        maxlength="20"
+        #empName="ngModel"
+        placeholder="Enter Employee Name"
+      />
+      <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && center_id.invalid"
+    >
+      Name is required!
+    </div>
+
+  </div>
+
+      <div class="form-group">
+        <label for="empEmail">Email</label>
+        <input
+          type="text"
+          class="form-control"
+          name="empEmail"
+          [(ngModel)]="form.empEmail"
+          required
+          #empEmail="ngModel"
+          placeholder="Enter Your Email"
+        />
+        <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && center_id.invalid"
+    >
+      Email is required!
+    </div>
+
+      </div>
+  
+        <div class="form-group">
+          <label for="empContact">Contact (Phone number)</label>
+          <input
+            type="text"
+            class="form-control"
+            name="empContact"
+            [(ngModel)]="form.empContact"
+            required
+            minlength="5"
+            maxlength="20"
+            #empContact="ngModel"
+            placeholder="___-___-____"
+          />
+
+          <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && center_id.invalid"
+    >
+      Contact is required!
+    </div>
+        </div>
+
+          <div class="form-group">
+            <label for="empType">Employee Type </label>
+            <input
+              type="text"
+              class="form-control"
+              name="empType"
+              [(ngModel)]="form.empType"
+              required
+              minlength="5"
+              maxlength="20"
+              #empType="ngModel"
+              placeholder="Manager or Moderator"
+            />
+            <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && center_id.invalid"
+    >
+      Do you want to register a Manager or Moderator? 
+    </div>
+          </div>
+
+            <div class="form-group">
+              <label for="center_id">Center Id</label>
+              <input
+                type="number"
+                class="form-control"
+                name="center_id"
+                [(ngModel)]="form.center_id"
+                required
+                minlength="3"
+                maxlength="20"
+                #center_id="ngModel"
+                placeholder="Enter Center Id"
+              />
+              <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && center_id.invalid"
+    >
+      Center Id is required!
+    </div>
+    </div>
+      <p> </p>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block" (click)="onSubmit()">Register an Employee!</button>
+    </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isInserted">
+      Registered!
+    </div>
+    <!-- <div class="alert-danger" *ngIf="f.submitted && empId.invalid">
+      <div *ngIf="empId.errors.required">Employee Id is required</div>
+      <div *ngIf="empId.errors.minlength">
+        Username must be at least 3 characters
+      </div>
+      <div *ngIf="empId.errors.maxlength">
+        Center Id must be at most 5 characters
+      </div>
+    </div> -->
+  
+
+  
+

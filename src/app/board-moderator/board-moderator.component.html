@@ -1,0 +1,130 @@
+<p> </p>
+<form
+      *ngIf="!isInserted"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+
+<div class="form-group">
+  <label for="email">Email</label>
+  <input
+    type="text"
+    class="form-control"
+    name="email"
+    [(ngModel)]="form.email"
+    required
+    minlength="3"
+    #email="ngModel"
+  />
+  <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && email.invalid"
+        >
+          Email is required!
+        </div>
+      </div>
+
+
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input
+      type="text"
+      class="form-control"
+      name="firstname"
+      [(ngModel)]="form.firstname"
+      required
+      minlength="3"
+      #firstname="ngModel"
+    />
+    <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && firstname.invalid"
+        >
+          Firstname is required!
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="lastname">Lastname</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastname"
+          [(ngModel)]="form.lastname"
+          required
+          minlength="5"
+          #lastname="ngModel"
+        />
+        <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="f.submitted && lastname.invalid"
+            >
+              Lastname is required!
+            </div>
+          </div>
+
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="text"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          #password="ngModel"
+        />
+        <div
+              class="alert alert-danger"
+              role="alert"
+              *ngIf="f.submitted && password.invalid"
+            >
+              Password is required!
+            </div>
+          </div>
+
+    <p> </p>
+
+  <div class="form-group">
+    <button class="btn btn-primary btn-block">Register for User!</button>
+  </div>
+
+
+<div class="form-group">
+  <div
+    class="alert alert-danger"
+    role="alert"
+    *ngIf="f.submitted && isNotInserted"
+  >
+    Login failed: {{ errorMessage }}
+  </div>
+</div>
+</form>
+
+  <div class="alert alert-success" *ngIf="isInserted">
+    Registered.
+  </div>
+
+<p></p>
+  
+    <!-- <div class="alert-danger" *ngIf="f.submitted && empId.invalid">
+      <div *ngIf="empId.errors.required">Employee Id is required</div>
+      <div *ngIf="empId.errors.minlength">
+        Username must be at least 3 characters
+      </div>
+      <div *ngIf="empId.errors.maxlength">
+        Center Id must be at most 5 characters
+      </div>
+    </div> -->
+
+
+
+<!-- <div class="form-group">
+    <button class="btn btn-primary btn-block">Delete an Appointment!</button>
+</div> -->

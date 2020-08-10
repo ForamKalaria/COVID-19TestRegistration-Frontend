@@ -1,0 +1,220 @@
+
+<p> </p>
+  <form
+        *ngIf="!isInserted"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+
+      <h4 style="text-align:center">Take a new Appointment here! </h4>
+      <br>
+
+  <div class="form-group">
+    <label for="appId">Appointment Id</label>
+    <input
+      type="number"
+      class="form-control"
+      name="appId"
+      [(ngModel)]="form.appId"
+      required
+      minlength="3"
+      maxlength="20"
+      #appId="ngModel"
+    />
+    <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && appId.invalid"
+          >
+            Appointment Id is required!
+          </div>
+        </div>
+ 
+
+    <div class="form-group">
+      <label for="center_id">Center Id</label>
+      <input
+        type="number"
+        class="form-control"
+        name="center_id"
+        [(ngModel)]="form.center_id"
+        required
+        minlength="5"
+        maxlength="20"
+        #center_id="ngModel"
+      />
+      <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="f.submitted && center_id.invalid"
+          >
+            Center Id is required!
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="empId">Employee Id</label>
+            <input
+              type="number"
+              class="form-control"
+              name="empId"
+              [(ngModel)]="form.empId"
+              required
+              minlength="5"
+              maxlength="20"
+              #empId="ngModel"
+            />
+            <div
+                  class="alert alert-danger"
+                  role="alert"
+                  *ngIf="f.submitted && empId.invalid"
+                >
+                  Employee Id is required!
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Patient Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  required
+                  minlength="5"
+                  #email="ngModel"
+                />
+                <div
+                      class="alert alert-danger"
+                      role="alert"
+                      *ngIf="f.submitted && email.invalid"
+                    >
+                      Email is required!
+                    </div>
+                  </div>
+    
+
+              
+                  <div class="form-group">
+                    <label for="appointmentDate">Appointment Date</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="appointmentDate"
+                      [(ngModel)]="form.appointmentDate"
+                      required
+                      minlength="5"
+                      maxlength="20"
+                      #appointmentDate="ngModel"
+                      placeholder="YYYY-MM-DD"
+                    />
+                    <div
+                          class="alert alert-danger"
+                          role="alert"
+                          *ngIf="f.submitted && appointmentDate.invalid"
+                        >
+                        Appointment Date is required!
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="appointmentTime">Appointment Time</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="appointmentTime"
+                          [(ngModel)]="form.appointmentTime"
+                          required
+                          minlength="5"
+                          maxlength="20"
+                          #appointmentTime="ngModel"
+                          placeholder="HH:MM:SS"
+                        />
+                        <div
+                              class="alert alert-danger"
+                              role="alert"
+                              *ngIf="f.submitted && appointmentTime.invalid"
+                            >
+                            Appointment Time is required!
+                            </div>
+                          </div>
+        
+      <p> </p>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Make an Appointment!</button>
+    </div>
+
+ 
+  <div class="form-group">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && isNotInserted"
+    >
+      Login failed: {{ errorMessage }}
+    </div>
+  </div>
+</form>
+
+    <div class="alert alert-success" *ngIf="isInserted">
+      Your Appointment is Registered and confirmation email has been sent!
+    </div>
+
+<br> <br>
+
+    <form
+        *ngIf="!isDeleted"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit1()"
+        #f="ngForm"
+        novalidate
+      >
+      <h5>Cancel an Appointment? (Appointment Id will be required in order to cancel an appointment)</h5>
+
+  <div class="form-group">
+    <label for="appId">Appointment Id</label>
+    <input
+      type="number"
+      size="5"
+      class="form-control"
+      name="appId"
+      [(ngModel)]="form.appId"
+      required
+      minlength="3"
+      maxlength="20"
+      #appId="ngModel"
+    />
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && appId.invalid"
+      >
+      Appointment Id is required!
+      </div>
+  </div>
+
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Cancel an Appointment!</button>
+    </div>
+
+ 
+  <div class="form-group">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="f.submitted && isNotDeleted"
+    >
+      Failed: {{ errorMessage }}
+    </div>
+  </div>
+</form>
+
+<div class="alert alert-success" *ngIf="isDeleted">
+  Your Appointment is Cancelled!
+</div>
+ 
+
